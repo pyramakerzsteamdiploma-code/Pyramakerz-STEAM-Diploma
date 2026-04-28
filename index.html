@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STEAM Diploma – Sales Brief | Pyramakerz Technologies</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d1117;
+    --paper: #f7f4ef;
+    --accent: #e84b2f;
+    --gold: #c9933a;
+    --teal: #1a7a6e;
+    --muted: #6b6560;
+    --rule: #d6d0c8;
+    --card-bg: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--ink);
+    color: #fff;
+    padding: 72px 80px 60px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #e84b2f22 0%, transparent 70%);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: 40px; left: 40px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #c9933a18 0%, transparent 70%);
+  }
+
+  .cover-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .cover-title span { color: var(--accent); }
+  .cover-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #b0a898;
+    margin-bottom: 40px;
+  }
+  .cover-desc {
+    font-size: 16px;
+    font-weight: 300;
+    color: #c8c0b4;
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    border-top: 1px solid #2a2a2a;
+    padding-top: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta-item { }
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #6b6560;
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .cover-brand {
+    position: absolute;
+    top: 72px; right: 80px;
+    z-index: 1;
+  }
+  .cover-brand img {
+    height: 48px;
+    width: auto;
+  }
+
+  .logo-bar {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 80px;
+    display: flex;
+    align-items: center;
+  }
+  .logo-bar img { height: 36px; width: auto; }
+
+  .body {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 64px 80px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .cover { padding: 48px 24px 40px; }
+    .cover-brand { top: 20px; right: 24px; }
+    .cover-brand img { height: 28px; }
+    .cover-title { font-size: 48px; }
+    .cover-subtitle { font-size: 22px; }
+    .cover-meta { flex-wrap: wrap; gap: 20px; }
+    .logo-bar { padding: 14px 24px; }
+    .logo-bar img { height: 26px; }
+    .body { padding: 32px 20px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .selling-grid { grid-template-columns: 1fr 1fr; }
+    .audience-row { flex-direction: column; }
+    .audience-item { padding: 18px 16px; }
+    .highlight-strip { flex-direction: column; text-align: center; padding: 24px; }
+    .cta-box { flex-direction: column; padding: 32px 24px; text-align: center; }
+    .cta-right { text-align: center; }
+    .footer { padding: 20px 24px; }
+  }
+  @media (max-width: 480px) {
+    .cover-title { font-size: 36px; }
+    .cover-subtitle { font-size: 18px; }
+    .selling-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 20px; }
+    .curriculum-table { font-size: 12px; }
+    .curriculum-table td, .curriculum-table th { padding: 10px 10px; }
+  }
+
+  /* SECTION HEADERS */
+  .section {
+    margin-bottom: 60px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .section-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 28px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--ink);
+  }
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* EXECUTIVE SUMMARY */
+  .summary-box {
+    background: var(--ink);
+    color: #fff;
+    padding: 40px 44px;
+    border-left: 4px solid var(--accent);
+    margin-bottom: 28px;
+  }
+  .summary-box p {
+    font-size: 16px;
+    line-height: 1.75;
+    font-weight: 300;
+    color: #c8c0b4;
+  }
+  .summary-box p strong { color: #fff; font-weight: 600; }
+
+  /* STAT CARDS */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* TWO COLUMNS */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* FEATURE CARDS */
+  .feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    padding: 28px;
+  }
+  .feature-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--ink);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .feature-card-title .icon {
+    color: var(--accent);
+    font-size: 18px;
+    margin-top: 1px;
+  }
+  .feature-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* CURRICULUM TABLE */
+  .curriculum-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .curriculum-table thead tr {
+    background: var(--ink);
+    color: #fff;
+  }
+  .curriculum-table thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .curriculum-table tbody tr {
+    border-bottom: 1px solid var(--rule);
+    background: var(--card-bg);
+    transition: background 0.15s;
+  }
+  .curriculum-table tbody tr:nth-child(even) {
+    background: #faf8f5;
+  }
+  .curriculum-table td {
+    padding: 14px 18px;
+    vertical-align: top;
+  }
+  .curriculum-table td:first-child {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .curriculum-table td:last-child {
+    font-weight: 700;
+    color: var(--teal);
+    white-space: nowrap;
+  }
+  .curriculum-table td span {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* HIGHLIGHT STRIP */
+  .highlight-strip {
+    background: var(--teal);
+    color: #fff;
+    padding: 28px 36px;
+    margin: 32px 0;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .highlight-strip .big-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .highlight-strip .small-text {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+  }
+  .highlight-strip .small-text strong { color: #fff; font-weight: 600; }
+
+  /* BULLET LIST */
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+  }
+  .bullet-list li {
+    padding: 8px 0 8px 22px;
+    position: relative;
+    font-size: 14.5px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+  }
+  .bullet-list li:last-child { border-bottom: none; }
+  .bullet-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* SELLING POINTS */
+  .selling-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 28px;
+  }
+  .selling-item {
+    background: var(--card-bg);
+    padding: 28px 24px;
+  }
+  .selling-item .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--rule);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .selling-item .title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .selling-item .desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* AUDIENCE */
+  .audience-row {
+    display: flex;
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .audience-item {
+    flex: 1;
+    background: var(--ink);
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .audience-item .icon { font-size: 28px; margin-bottom: 8px; }
+  .audience-item .label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .audience-item .sub {
+    font-size: 12px;
+    color: #6b6560;
+    line-height: 1.5;
+  }
+
+  /* GRADING SECTION */
+  .grade-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .grade-bar {
+    display: flex;
+    align-items: stretch;
+    flex: 1;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .grade-fill {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .grade-fill.primary { background: var(--ink); flex: 92; }
+  .grade-fill.secondary { background: #f0ece6; flex: 8; }
+  .grade-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+  }
+  .grade-fill.secondary .grade-pct { color: var(--ink); }
+  .grade-name {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b6560;
+    margin-top: 2px;
+  }
+  .grade-fill.primary .grade-name { color: #6b6560; }
+
+  /* CTA */
+  .cta-box {
+    background: var(--accent);
+    color: #fff;
+    padding: 48px 52px;
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .cta-left .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+  .cta-left .cta-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.85);
+  }
+  .cta-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .cta-contact-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 4px;
+  }
+  .cta-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .cta-brand span { color: rgba(255,255,255,0.65); font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 300; display: block; margin-top: 2px; }
+
+  /* CONFIDENTIAL FOOTER */
+  .footer {
+    text-align: center;
+    padding: 24px 80px;
+    border-top: 1px solid var(--rule);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #b0a898;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ COVER ═══════════════ -->
+<div class="cover">
+  <div class="cover-brand"><img src="https://www.pyramakerz.com/assets/img/logo-orange.png" alt="Pyramakerz Technologies"></div>
+  <div class="cover-label">Professional Development Program</div>
+  <div class="cover-title">STEAM<br><span>Diploma</span></div>
+  <div class="cover-subtitle">Professional Development Program</div>
+  <p class="cover-desc">
+    Everything you need to know about the STEAM Diploma — Pyramakerz's flagship professional development program for educators.
+  </p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Total Duration</div>
+      <div class="cover-meta-value">80 Hours</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Program Format</div>
+      <div class="cover-meta-value">Blended Learning</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Target Audience</div>
+      <div class="cover-meta-value">Educators</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Cohort Size</div>
+      <div class="cover-meta-value">12–15 Trainees</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Issued</div>
+      <div class="cover-meta-value">August 2025</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ LOGO BAR ═══════════════ -->
+<div class="logo-bar">
+  <img src="https://www.pyramakerz.com/assets/img/logo-orange.png" alt="Pyramakerz Technologies">
+</div>
+
+<!-- ═══════════════ BODY ═══════════════ -->
+<div class="body">
+
+  <!-- 1. EXECUTIVE SUMMARY -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-title">Executive Summary</div>
+      <div class="section-rule"></div>
+    </div>
+    <div class="summary-box">
+      <p>
+        The <strong>STEAM Diploma</strong> is Pyramakerz Technologies' comprehensive 80-hour professional development program designed to transform educators into confident, capable STEAM instructors. It blends <strong>theory, hands-on technology projects, and 21st-century pedagogy</strong> — covering everything from 3D printing and Arduino programming to Python, mobile app development, and web design. Graduates leave equipped to inspire the next generation of innovators.
+      </p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">80</div>
+        <div class="stat-label">Total Hours</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Topic Modules</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">12–15</div>
+        <div class="stat-label">Trainees / Cohort</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">✓</div>
+        <div class="stat-label">Certified Completion</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUE PROPOSITION -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">—</div>
+      <div class="section-title">Market Opportunity</div>
+      <div class="section-rule"></div>
+    </div>
+    <div style="background:var(--teal); padding:36px 44px; display:flex; align-items:center; gap:36px;">
+      <div style="flex-shrink:0; text-align:center;">
+        <div style="font-family:'Playfair Display',serif; font-size:52px; font-weight:900; color:#fff; line-height:1;">$125B</div>
+        <div style="font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-top:4px;">by 2030</div>
+      </div>
+      <div style="width:1px; background:rgba(255,255,255,0.15); align-self:stretch;"></div>
+      <div style="font-size:16px; font-weight:300; color:rgba(255,255,255,0.9); line-height:1.75;">
+        The global K-12 STEM/STEAM education market is projected to reach <strong style="color:#fff; font-weight:600;">$125.2 Billion by 2030</strong>. Schools are increasingly seeking <strong style="color:#fff; font-weight:600;">"STEAM-Certified" teachers</strong> to meet national standards and rising parent expectations — making this diploma exactly what the market demands right now.
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. TARGET AUDIENCE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-title">Who Is This For?</div>
+      <div class="section-rule"></div>
+    </div>
+    <div class="audience-row">
+      <div class="audience-item">
+        <div class="icon">📐</div>
+        <div class="label">Teachers of All Disciplines</div>
+        <div class="sub">Science, Math, ICT and beyond — any educator ready to teach STEAM</div>
+      </div>
+      <div class="audience-item">
+        <div class="icon">🔬</div>
+        <div class="label">STEAM Coordinators</div>
+        <div class="sub">Seeking structured professional certification</div>
+      </div>
+      <div class="audience-item">
+        <div class="icon">⚙️</div>
+        <div class="label">Engineers & Technical Professionals</div>
+        <div class="sub">Preparing to enter education or corporate training roles</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. CURRICULUM OVERVIEW -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-title">What They Learn — Curriculum Breakdown</div>
+      <div class="section-rule"></div>
+    </div>
+    <table class="curriculum-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Module</th>
+          <th>Key Skills Covered</th>
+          <th>Hours</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>3D Design with Tinkercad<span>Modeling & Design</span></td>
+          <td>3D printing process, geometric modeling, gear design, architectural structures</td>
+          <td>6 hrs</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>mBlock Basics<span>Coding & Robotics</span></td>
+          <td>Block-based coding, loops, variables, AI integration, Arduino projects</td>
+          <td>6 hrs</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Electricity & Circuit Simulation<span>Electronics</span></td>
+          <td>Circuit components, Ohm's Law, series/parallel circuits, resistors</td>
+          <td>6 hrs</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Arduino Programming<span>Hardware & Code</span></td>
+          <td>Arduino commands, sensors, actuators, smart systems, project troubleshooting</td>
+          <td>20 hrs</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Mobile App Development<span>MIT App Inventor</span></td>
+          <td>UI components, block programming, sensors, debugging, publishing apps</td>
+          <td>8 hrs</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Web Development<span>HTML, CSS &amp; JavaScript</span></td>
+          <td>Building and styling webpages, adding interactive behavior with JavaScript</td>
+          <td>6 hrs</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>STEAM Hands-on Projects &amp; Pedagogies<span>Teaching Methods</span></td>
+          <td>Inquiry-Based Learning, PBL, 5E Model, Visible Thinking, Engineering Design</td>
+          <td>6 hrs</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Python Programming<span>Software Development</span></td>
+          <td>Variables, control flow, functions, data structures, Tkinter GUI, AI tools</td>
+          <td>10 hrs</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>3D Printing (Practical)<span>Fabrication</span></td>
+          <td>Machine parts, print preparation, material selection, troubleshooting</td>
+          <td>3 hrs</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Laser Cutting<span>Digital Fabrication</span></td>
+          <td>Machine setup, safety, 2D vector design, cutting parameters, materials</td>
+          <td>3 hrs</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight-strip">
+      <div class="big-text">74</div>
+      <div class="small-text">
+        <strong>Interactive live sessions</strong> make up the core of the program, supported by 6 hours of summative assessments and project-based assignments — keeping learning hands-on, applied, and deeply engaging throughout.
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. KEY SELLING POINTS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-title">Key Selling Points</div>
+      <div class="section-rule"></div>
+    </div>
+    <div class="selling-grid">
+      <div class="selling-item">
+        <div class="num">01</div>
+        <div class="title">Truly Comprehensive</div>
+        <div class="desc">80 hours across 10+ modules — hardware, software, pedagogy, and fabrication. No other program covers this breadth in one cohesive diploma.</div>
+      </div>
+      <div class="selling-item">
+        <div class="num">02</div>
+        <div class="title">Hands-On by Design</div>
+        <div class="desc">Trainees build real projects — Arduino doorbells, smart bridges, mobile apps, Python GUIs, laser-cut designs — not just theory.</div>
+      </div>
+      <div class="selling-item">
+        <div class="num">03</div>
+        <div class="title">Pedagogically Rich</div>
+        <div class="desc">Unique in pairing tech skills with a dedicated module on STEAM teaching methodologies: PBL, 5E Model, and Engineering Design Process.</div>
+      </div>
+      <div class="selling-item">
+        <div class="num">04</div>
+        <div class="title">World-Class Instructors</div>
+        <div class="desc">Every trainer is carefully selected for deep subject-matter expertise and proven teaching ability — so participants always learn from the best in the field.</div>
+      </div>
+      <div class="selling-item">
+        <div class="num">05</div>
+        <div class="title">Dedicated Support</div>
+        <div class="desc">A full-time program coordinator + dedicated customer care rep for every cohort ensures quality, consistency, and a smooth trainee experience.</div>
+      </div>
+      <div class="selling-item">
+        <div class="num">06</div>
+        <div class="title">Recognized Certification</div>
+        <div class="desc">Graduates receive a Certificate of Completion and a campus graduation ceremony — giving their achievement real professional and social recognition.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. PROGRAM STRUCTURE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-title">Program Structure &amp; Delivery</div>
+      <div class="section-rule"></div>
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="feature-card" style="margin-bottom:16px">
+          <div class="feature-card-title"><span class="icon">📹</span> Self-Paced Learning</div>
+          <p>Video tutorials, reading materials, exercises, and assessments — available on demand, allowing trainees to revisit content and learn at their own pace.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-title"><span class="icon">💻</span> Interactive Live Sessions</div>
+          <p>74 hours of facilitator-led sessions with real-time engagement via Wordwall, Quizizz, Padlet, and Mentimeter — making every session dynamic and participatory.</p>
+        </div>
+      </div>
+      <div>
+        <div class="feature-card" style="margin-bottom:16px">
+          <div class="feature-card-title"><span class="icon">📐</span> Summative Assessments</div>
+          <p>6 hours of practical assignments including STEAM lesson creation, hands-on activities, and reflective projects that demonstrate real-world readiness.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-title"><span class="icon">📚</span> Included Resources</div>
+          <ul class="bullet-list" style="margin-top:8px">
+            <li>Session recordings — rewatch anytime</li>
+            <li>Digital library of curated resources</li>
+            <li>Optional STEAM &amp; Robotics Kit (purchasable)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. CERTIFICATION -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div class="section-title">Certification</div>
+      <div class="section-rule"></div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-card-title" style="margin-bottom:8px;"><span class="icon">🎓</span> Certificate of Completion</div>
+      <p>Trainees who meet the attendance and grading criteria earn a <strong>Certificate of Completion</strong> from Pyramakerz Technologies, recognized at a campus graduation ceremony.</p>
+    </div>
+  </div>
+
+  <!-- 7. OBJECTION HANDLING -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">07</div>
+      <div class="section-title">Objection Handling Cheat Sheet</div>
+      <div class="section-rule"></div>
+    </div>
+    <div style="background:var(--card-bg); border:1px solid var(--rule)">
+      <div style="padding:20px 24px; border-bottom:1px solid var(--rule);">
+        <div style="font-weight:700; color:var(--ink); margin-bottom:6px">"I have no STEAM experience."</div>
+        <div style="font-size:14px; color:var(--muted)">That's exactly who we designed this for. The program starts from first principles and builds up progressively — with support tools and dedicated coordinators every step of the way.</div>
+      </div>
+      <div style="padding:20px 24px; border-bottom:1px solid var(--rule);">
+        <div style="font-weight:700; color:var(--ink); margin-bottom:6px">"80 hours is a big commitment."</div>
+        <div style="font-size:14px; color:var(--muted)">Sessions are structured, spaced out, and supported by self-paced recordings — so trainees never fall behind. The diploma is designed to fit into an educator's schedule.</div>
+      </div>
+      <div style="padding:20px 24px; border-bottom:1px solid var(--rule);">
+        <div style="font-weight:700; color:var(--ink); margin-bottom:6px">"What if I miss a session?"</div>
+        <div style="font-size:14px; color:var(--muted)">Trainees can miss up to 2 sessions (15% absence allowed). All sessions are recorded and accessible in the digital library.</div>
+      </div>
+      <div style="padding:20px 24px;">
+        <div style="font-weight:700; color:var(--ink); margin-bottom:6px">"Is this just theory?"</div>
+        <div style="font-size:14px; color:var(--muted)">Far from it. 74 out of 80 hours are interactive. Trainees build functional projects — apps, circuits, 3D designs, smart systems — throughout the program.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <div class="cta-left">
+      <div class="cta-title">Ready to Get Started?</div>
+      <div class="cta-sub">Contact the Pyramakerz team to discuss enrollment, scheduling, or cohort options for your institution.</div>
+    </div>
+    <div class="cta-right">
+      <div class="cta-contact-label">Delivered by</div>
+      <div class="cta-brand">Pyramakerz <span>Technologies · 2025</span></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Pyramakerz Technologies &nbsp;·&nbsp; STEAM Diploma &nbsp;·&nbsp; 2025
+</div>
+
+</body>
+</html>
